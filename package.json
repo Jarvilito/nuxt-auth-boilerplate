@@ -1,21 +1,30 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "@sidebase/nuxt-auth": "0.10.0",
-    "axios": "^1.7.9",
-    "next-auth": "~4.21.1",
-    "nuxt": "^3.15.2",
-    "vue": "latest",
-    "vue-router": "latest"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+	"name": "nuxt-app",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@sidebase/nuxt-auth": "0.10.0",
+		"axios": "^1.7.9",
+		"jsdom": "^26.0.0",
+		"next-auth": "~4.21.1",
+		"nuxt": "^3.15.2",
+		"unplugin-auto-import": "^19.0.0",
+		"vue": "latest",
+		"vue-router": "latest"
+	},
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^5.2.1",
+		"@vue/test-utils": "^2.4.6",
+		"unplugin-vue-components": "^28.0.0",
+		"vitest": "^3.0.2"
+	}
 }
