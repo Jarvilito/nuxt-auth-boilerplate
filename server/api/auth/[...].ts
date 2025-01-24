@@ -1,4 +1,3 @@
-import axios from 'axios';
 import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { NuxtAuthHandler } from '#auth';
@@ -12,12 +11,12 @@ export default NuxtAuthHandler({
 	},
 	providers: [
 		// Use default imports correctly
-		// @ts-expect-error
+		// @ts-expect-error will not work without this
 		GithubProvider.default({
 			clientId: 'Ov23liqGeTcB3cF4Tcl2',
 			clientSecret: '87af5b25b452ff3540a6970d27c22bd6c52f5058',
 		}),
-		// @ts-expect-error
+		// @ts-expect-error will not work without this
 		CredentialsProvider.default({
 			name: 'Credentials',
 			credentials: {
@@ -27,24 +26,22 @@ export default NuxtAuthHandler({
 			async authorize(credentials: { username: string; password: string }) {
 				console.log('Authorize function called with credentials:', credentials);
 				try {
-					const res = await axios.post(
-						'https://dummyjson.com/auth/login',
-						credentials
-					);
-					console.log('Authorize function response:', res.data);
-					if (res.data && res.data.accessToken) {
-						return res.data;
+					const res: any = await $fetch('https://dummyjson.com/auth/login', {
+						method: 'POST',
+						body: credentials,
+					});
+					console.log('Authorize function response:', res);
+					if (res && res?.accessToken) {
+						return res;
 					} else {
-						throw new Error(res.data.message || 'Invalid credentials');
+						return res.message || 'Invalid credentials';
 					}
 				} catch (e: any) {
 					console.error(
 						'Authorize function error:',
 						e.response?.data?.message || e.message
 					);
-					throw new Error(
-						e.response?.data?.message || 'Failed to authenticate'
-					);
+					return e.response?.data?.message || 'Failed to authenticate';
 				}
 			},
 		}),

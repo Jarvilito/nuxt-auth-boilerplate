@@ -7,10 +7,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppFooter: typeof import('./components/AppFooter.vue')['default']
-    AppHeader: typeof import('./components/AppHeader.vue')['default']
-    LoginForm: typeof import('./components/LoginForm.vue')['default']
-    RegisterForm: typeof import('./components/RegisterForm.vue')['default']
+    AppFooter: typeof import('./app/components/AppFooter.vue')['default']
+    AppHeader: typeof import('./app/components/AppHeader.vue')['default']
+    BaseButton: typeof import('./app/components/base/BaseButton.vue')['default']
+    BaseInput: typeof import('./app/components/base/BaseInput.vue')['default']
+    LoginForm: typeof import('./app/components/LoginForm.vue')['default']
+    RegisterForm: typeof import('./app/components/RegisterForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

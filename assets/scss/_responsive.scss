@@ -1,0 +1,41 @@
+/* _responsive.scss */
+
+/* Tailwind's sm breakpoint */
+$sm-breakpoint: 640px;
+
+/* Responsive font-size function */
+@mixin responsive-font-size(
+	$desktop-font,
+	$desktop-line,
+	$mobile-font: null,
+	$mobile-line: null
+) {
+	$mobile-font: if($mobile-font == null, $desktop-font - 0.25rem, $mobile-font);
+	$mobile-line: if($mobile-line == null, $desktop-line - 0.25rem, $mobile-line);
+
+	font-size: $mobile-font;
+	line-height: $mobile-line;
+
+	@media (min-width: #{$sm-breakpoint}) {
+		font-size: $desktop-font;
+		line-height: $desktop-line;
+	}
+}
+
+@mixin responsive-font-size(
+	$desktop-font,
+	$desktop-line,
+	$mobile-font: null,
+	$mobile-line: null
+) {
+	$mobile-font: if($mobile-font == null, $desktop-font - 0.25rem, $mobile-font);
+	$mobile-line: if($mobile-line == null, $desktop-line - 0.25rem, $mobile-line);
+
+	font-size: $mobile-font;
+	line-height: $mobile-line;
+
+	@media (min-width: #{$sm-breakpoint}) {
+		font-size: $desktop-font;
+		line-height: $desktop-line;
+	}
+}

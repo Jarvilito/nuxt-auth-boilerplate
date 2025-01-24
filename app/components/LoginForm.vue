@@ -1,0 +1,63 @@
+<template>
+	<form @submit.prevent="handleSubmit">
+		<div class="flex flex-col gap-4">
+			<base-input
+				id="username"
+				placeholder="Username"
+				label="Username"
+				type="text"
+				v-model="form.username"
+			/>
+			<base-input
+				id="password"
+				placeholder="Password"
+				label="Password"
+				type="password"
+				v-model="form.password"
+			/>
+			<base-button
+				customClass="bg-gray-600 text-white text-lg"
+				type="submit"
+				:disabled="isLoading"
+				title="Sign In"
+			/>
+		</div>
+	</form>
+</template>
+
+<script setup>
+	const form = ref({
+		username: '',
+		password: '',
+	});
+
+	const isLoading = ref(false);
+
+	const { signIn } = useAuth();
+
+	async function handleSubmit() {
+		if (!form.value.username || !form.value.password) {
+			alert('Please enter both username and password');
+			return;
+		}
+		//extra layer of validation
+		if (isLoading.value) return;
+
+		isLoading.value = true;
+		try {
+			console.log('Attempting to sign in');
+			const response = await signIn('credentials', {
+				username: form.value.username,
+				password: form.value.password,
+			});
+			console.log('Sign in response:', response);
+		} catch (e) {
+			console.error('Failed to sign in:', e.message);
+			alert('Failed to sign in: ' + e.message);
+		} finally {
+			isLoading.value = false;
+		}
+	}
+</script>
+
+<style lang="scss" scoped></style>
