@@ -4,41 +4,48 @@
 			class="min-w-[550px] flex flex-col shadow-xl px-6 py-8 rounded-lg ring-1 ring-gray-100"
 		>
 			<div class="flex gap-4 mb-4">
-				<base-button
-					customClass="w-full"
-					title="Login"
-					@click="tab = 'login'"
-				/>
+				<base-button customClass="w-full" @click="tab = 'login'">
+					Login
+				</base-button>
 
 				<base-button
 					customClass="w-full"
 					type="button"
 					@click="tab = 'register'"
-					title="Register"
-				/>
+				>
+					Register
+				</base-button>
 			</div>
 
 			<login-form v-if="tab === 'login'" />
 			<register-form v-else />
 
-			<base-button
-				customClass="bg-blue-700 text-white"
-				@click="handleSignIn"
-				title="Sign in to Github"
-			/>
+			<base-button customClass="text-lg" @click="handleSignIn" variant="link">
+				Sign in to Github
+			</base-button>
+
+			<base-button variant="solid" @click="toggleTheme"
+				>Toggle Theme</base-button
+			>
 			<slot />
 		</div>
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 	const { signIn } = useAuth();
+	const colorMode = useColorMode();
 
 	async function handleSignIn() {
-		await signIn();
+		await signIn('github');
 	}
 	//for login/register credential
 	const tab = ref('login');
+
+	const toggleTheme = () => {
+		console.log('toggling');
+		colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
+	};
 </script>
 
 <style lang="scss" scoped></style>

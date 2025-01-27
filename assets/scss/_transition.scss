@@ -1,0 +1,10 @@
+/* assets/css/global.css */
+
+/* Apply transition on all color changes globally */
+*,
+*::before,
+*::after {
+	transition-property: background-color, color; /* Transition background and text color */
+	transition-duration: 100ms; /* 300ms transition */
+	transition-timing-function: ease-in-out; /* Smooth transition */
+}

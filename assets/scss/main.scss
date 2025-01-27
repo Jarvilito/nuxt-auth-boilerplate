@@ -1,2 +1,105 @@
 @use './responsive';
 @use './typography';
+@use './transition';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* Light mode and default colors */
+	:root {
+		/* PRIMARY COLORS */
+		--brand-blue: 0, 84, 168;
+		--brand-dark-blue: 0, 61, 122;
+		--brand-medium-blue: 100, 162, 223;
+		--brand-extra-light-blue: 240, 248, 255;
+
+		/* OCEAN */
+		--ocean: 0, 171, 217;
+		--ocean-medium: 103, 219, 250;
+		--ocean-light: 184, 240, 255;
+
+		/* NEUTRALS */
+		--neutral-medium: 237, 241, 246;
+		--neutral-medium-dark: 165, 168, 173;
+		--grey-medium: 232, 234, 237;
+		--grey-light: 239, 242, 246;
+		--white: 255, 255, 255;
+		--dark: 40, 44, 50;
+
+		/* FONT */
+		--font-primary: 56, 66, 80;
+		--font-secondary: 79, 89, 104;
+		--font-tertiary: 133, 141, 152;
+
+		/* STROKES */
+		--stroke: 173, 182, 195;
+		--stroke-light: 213, 219, 226;
+		--stroke-extra-light: 231, 234, 238;
+
+		/* STATE COLORS */
+		/* ERROR */
+		--red-main: 236, 98, 87;
+		--red-medium: 253, 156, 149;
+		--red-background-tone: 255, 245, 244;
+
+		/* WARNING */
+		--yellow-main: 255, 169, 2;
+		--yellow-medium: 255, 199, 89;
+		--yellow-background-tone: 255, 252, 243;
+
+		/* SUCCESS */
+		--green-main: 141, 200, 0;
+		--green-medium: 210, 239, 140;
+		--green-background-tone: 251, 255, 241;
+	}
+
+	/* Dark mode colors */
+	:root[class~='dark'] {
+		/* PRIMARY COLORS */
+		--brand-blue: 65, 151, 237;
+		--brand-dark-blue: 0, 49, 98;
+		--brand-medium-blue: 129, 193, 255;
+		--brand-extra-light-blue: 24, 45, 77;
+
+		/* OCEAN */
+		--ocean: 0, 171, 217;
+		--ocean-medium: 75, 206, 241;
+		--ocean-light: 165, 236, 255;
+
+		/* NEUTRALS */
+		--neutral-medium: 83, 91, 100;
+		--neutral-medium-dark: 24, 45, 77;
+		--grey-medium: 87, 91, 97;
+		--grey-light: 59, 63, 70;
+		--white: 255, 255, 255;
+		--dark: 33, 37, 41;
+
+		/* FONT */
+		--font-primary: 240, 243, 246;
+		--font-secondary: 210, 214, 219;
+		--font-tertiary: 189, 194, 201;
+
+		/* STROKES */
+		--stroke: 157, 167, 182;
+		--stroke-light: 137, 148, 164;
+		--stroke-extra-light: 109, 119, 135;
+
+		/* STATE COLORS */
+		/* ERROR */
+		--red-main: 255, 117, 106;
+		--red-medium: 253, 156, 149;
+		--red-background-tone: 49, 2, 0;
+
+		/* WARNING */
+		--yellow-main: 255, 221, 99;
+		--yellow-medium: 255, 199, 89;
+		--yellow-background-tone: 38, 30, 7;
+
+		/* SUCCESS */
+		--green-main: 171, 211, 74;
+		--green-medium: 154, 201, 39;
+		--green-background-tone: 22, 35, 13;
+	}
+}

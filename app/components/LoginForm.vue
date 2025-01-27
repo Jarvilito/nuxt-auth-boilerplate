@@ -16,11 +16,15 @@
 				v-model="form.password"
 			/>
 			<base-button
-				customClass="bg-gray-600 text-white text-lg"
+				customClass="text-lg"
 				type="submit"
+				:loading="isLoading"
 				:disabled="isLoading"
-				title="Sign In"
-			/>
+				icon="material-symbols:account-circle-outline"
+				variant="outlined"
+			>
+				Sign In
+			</base-button>
 		</div>
 	</form>
 </template>
@@ -33,30 +37,31 @@
 
 	const isLoading = ref(false);
 
-	const { signIn } = useAuth();
+	// const { signIn } = useAuth();
 
 	async function handleSubmit() {
-		if (!form.value.username || !form.value.password) {
-			alert('Please enter both username and password');
-			return;
-		}
-		//extra layer of validation
-		if (isLoading.value) return;
-
 		isLoading.value = true;
-		try {
-			console.log('Attempting to sign in');
-			const response = await signIn('credentials', {
-				username: form.value.username,
-				password: form.value.password,
-			});
-			console.log('Sign in response:', response);
-		} catch (e) {
-			console.error('Failed to sign in:', e.message);
-			alert('Failed to sign in: ' + e.message);
-		} finally {
-			isLoading.value = false;
-		}
+		// if (!form.value.username || !form.value.password) {
+		// 	alert('Please enter both username and password');
+		// 	return;
+		// }
+		// //extra layer of validation
+		// if (isLoading.value) return;
+
+		// isLoading.value = true;
+		// try {
+		// 	console.log('Attempting to sign in');
+		// 	const response = await signIn('credentials', {
+		// 		username: form.value.username,
+		// 		password: form.value.password,
+		// 	});
+		// 	console.log('Sign in response:', response);
+		// } catch (e) {
+		// 	console.error('Failed to sign in:', e.message);
+		// 	alert('Failed to sign in: ' + e.message);
+		// } finally {
+		// 	isLoading.value = false;
+		// }
 	}
 </script>
 

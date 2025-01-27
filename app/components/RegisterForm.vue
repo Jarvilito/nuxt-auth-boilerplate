@@ -36,16 +36,18 @@
 				placeholder="Password"
 			/>
 			<base-button
-				customClass="bg-gray-600 text-white text-lg"
+				customClass="text-lg"
 				type="submit"
 				:disabled="isLoading"
-				title="Sign Up"
-			/>
+				variant="outlined"
+			>
+				Sign Up
+			</base-button>
 		</div>
 	</form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 	const isLoading = ref(false);
 	const form = ref({
 		email: '',
