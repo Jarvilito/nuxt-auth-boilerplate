@@ -45,10 +45,10 @@ export default defineNuxtConfig({
 		resolve: {
 			alias: {
 				// Personal desktop
-				// '@': '/C:/Projects/nuxt-crash/nuxt-recipe',
+				'@': '/C:/Projects/nuxt-crash/nuxt-recipe',
 
 				// Work laptop
-				'@': 'C:/Work/nuxt-auth-boilerplate',
+				// '@': 'C:/Work/nuxt-auth-boilerplate',
 			},
 		},
 	},

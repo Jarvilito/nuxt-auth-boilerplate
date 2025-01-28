@@ -2,11 +2,7 @@
 	<button
 		:disabled="disabled"
 		:type="type"
-		:class="[
-			classVariant,
-			classSpacing,
-			'mt-4 rounded-md font-semibold text-md',
-		]"
+		:class="[classSpacing, classVariant, 'rounded-md font-semibold text-md']"
 		:variant="variant"
 		@click="handleClick"
 	>
@@ -30,17 +26,23 @@
 </template>
 
 <script setup lang="ts">
+	import type { PropType } from 'vue';
+
 	const props = defineProps({
 		type: {
 			type: String as PropType<'button' | 'submit' | 'reset'>,
 			default: 'button',
 		},
-		variant: { type: String, default: 'solid' },
+		variant: {
+			type: String as PropType<'solid' | 'outlined' | 'link'>,
+			default: 'solid',
+		},
 		icon: { type: String, required: false, default: '' },
 		iconSize: { type: String, default: '1.5rem' },
 		loading: { type: Boolean, default: false },
 		disabled: { type: Boolean, default: false },
 		customClass: { type: String, default: '' },
+		customSpace: { type: String, required: false },
 		customColor: { type: String, default: '' },
 		iconEnd: { type: Boolean, default: false },
 		iconOnly: { type: Boolean, default: false },
@@ -75,6 +77,7 @@
 	});
 
 	const classSpacing = computed(() => {
+		if (props.customSpace) return props.customSpace;
 		if (props.iconOnly) {
 			return 'p-[0.5rem] md:p-[0.88rem]';
 		}

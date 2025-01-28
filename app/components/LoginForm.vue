@@ -43,27 +43,27 @@
 
 	async function handleSubmit() {
 		isLoading.value = true;
-		// if (!form.value.username || !form.value.password) {
-		// 	alert('Please enter both username and password');
-		// 	return;
-		// }
-		// //extra layer of validation
-		// if (isLoading.value) return;
+		if (!form.value.username || !form.value.password) {
+			alert('Please enter both username and password');
+			return;
+		}
+		//extra layer of validation
+		if (isLoading.value) return;
 
-		// isLoading.value = true;
-		// try {
-		// 	console.log('Attempting to sign in');
-		// 	const response = await signIn('credentials', {
-		// 		username: form.value.username,
-		// 		password: form.value.password,
-		// 	});
-		// 	console.log('Sign in response:', response);
-		// } catch (e) {
-		// 	console.error('Failed to sign in:', e.message);
-		// 	alert('Failed to sign in: ' + e.message);
-		// } finally {
-		// 	isLoading.value = false;
-		// }
+		isLoading.value = true;
+		try {
+			console.log('Attempting to sign in');
+			const response = await signIn('credentials', {
+				username: form.value.username,
+				password: form.value.password,
+			});
+			console.log('Sign in response:', response);
+		} catch (e) {
+			console.error('Failed to sign in:', e.message);
+			alert('Failed to sign in: ' + e.message);
+		} finally {
+			isLoading.value = false;
+		}
 	}
 </script>
 
