@@ -2,9 +2,12 @@
 	<button
 		:disabled="disabled"
 		:type="type"
-		:class="classVariant"
+		:class="[
+			classVariant,
+			classSpacing,
+			'mt-4 rounded-md font-semibold text-md',
+		]"
 		:variant="variant"
-		class="px-4 py-2 mt-4 rounded-md font-semibold"
 		@click="handleClick"
 	>
 		<div :class="['flex items-center justify-center']">
@@ -12,9 +15,9 @@
 				v-if="(icon && !iconEnd) || loading"
 				:name="loading ? 'svg-spinners:180-ring-with-bg' : icon"
 				:size="iconSize"
-				class="mr-[0.5rem]"
+				:class="[!iconOnly && 'mr-[0.5rem]']"
 			/>
-			<slot>Base Button</slot>
+			<slot />
 
 			<Icon
 				v-if="icon && iconEnd"
@@ -33,13 +36,14 @@
 			default: 'button',
 		},
 		variant: { type: String, default: 'solid' },
-		icon: { type: String, required: false },
+		icon: { type: String, required: false, default: '' },
 		iconSize: { type: String, default: '1.5rem' },
 		loading: { type: Boolean, default: false },
 		disabled: { type: Boolean, default: false },
 		customClass: { type: String, default: '' },
 		customColor: { type: String, default: '' },
 		iconEnd: { type: Boolean, default: false },
+		iconOnly: { type: Boolean, default: false },
 	});
 
 	const emit = defineEmits(['click']);
@@ -68,6 +72,14 @@
 				? 'bg-grey-medium text-font-tertiary'
 				: 'text-grey-medium'
 		}`;
+	});
+
+	const classSpacing = computed(() => {
+		if (props.iconOnly) {
+			return 'p-[0.5rem] md:p-[0.88rem]';
+		}
+
+		return 'py-[0.5rem] md:py-[0.56rem] md:px-[1.25rem] px-[0.88rem]';
 	});
 </script>
 

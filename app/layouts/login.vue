@@ -27,6 +27,17 @@
 			<base-button variant="solid" @click="toggleTheme"
 				>Toggle Theme</base-button
 			>
+			<div class="flex py-4">
+				<p>Button Sample</p>
+				<base-button
+					iconOnly
+					variant="outlined"
+					icon="material-symbols:check-circle-outline"
+				/>
+
+				<base-toggle color="brand-medium-blue" v-model="toggle" />
+			</div>
+
 			<slot />
 		</div>
 	</div>
@@ -41,6 +52,8 @@
 	}
 	//for login/register credential
 	const tab = ref('login');
+
+	const toggle = ref(false);
 
 	const toggleTheme = () => {
 		console.log('toggling');

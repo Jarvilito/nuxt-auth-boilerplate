@@ -5,6 +5,7 @@
 				id="username"
 				placeholder="Username"
 				label="Username"
+				error="This is an error message."
 				type="text"
 				v-model="form.username"
 			/>
@@ -13,6 +14,7 @@
 				placeholder="Password"
 				label="Password"
 				type="password"
+				hint="This is a hint text to help user."
 				v-model="form.password"
 			/>
 			<base-button

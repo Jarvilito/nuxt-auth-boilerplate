@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{vue,js,ts}"],
+  content: ['./components/**/*.{vue,js}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+    './app.vue',],
   darkMode: 'class',
   theme: {
     extend: {
@@ -8,6 +13,7 @@ export default {
       //to add more colours variable go to main.scss inside assets/scss
       // make sure to include dark mode color too
       colors: {
+
         // PRIMARY COLORS
         'brand-blue': 'rgba(var(--brand-blue), <alpha-value>)',
         'brand-dark-blue': 'rgba(var(--brand-dark-blue), <alpha-value>)',
@@ -70,6 +76,82 @@ export default {
       padding: '2rem',
     }
   },
+  //safelist work for dynamic class names
+
+  safelist: [
+    'bg-brand-blue',
+    // PRIMARY COLORS
+    'aria-checked:bg-brand-blue',
+    'aria-checked:dark:bg-brand-blue',
+    'aria-checked:bg-brand-dark-blue',
+    'aria-checked:dark:bg-brand-dark-blue',
+    'aria-checked:bg-brand-medium-blue',
+    'aria-checked:dark:bg-brand-medium-blue',
+    'aria-checked:bg-brand-extra-light-blue',
+    'aria-checked:dark:bg-brand-extra-light-blue',
+
+    // OCEAN
+    'aria-checked:bg-ocean',
+    'aria-checked:dark:bg-ocean',
+    'aria-checked:bg-ocean-medium',
+    'aria-checked:dark:bg-ocean-medium',
+    'aria-checked:bg-ocean-light',
+    'aria-checked:dark:bg-ocean-light',
+
+    // NEUTRALS
+    'aria-checked:bg-neutral-medium',
+    'aria-checked:dark:bg-neutral-medium',
+    'aria-checked:bg-neutral-medium-dark',
+    'aria-checked:dark:bg-neutral-medium-dark',
+    'aria-checked:bg-grey-medium',
+    'aria-checked:dark:bg-grey-medium',
+    'aria-checked:bg-grey-light',
+    'aria-checked:dark:bg-grey-light',
+    'aria-checked:bg-white',
+    'aria-checked:dark:bg-white',
+    'aria-checked:bg-dark',
+    'aria-checked:dark:bg-dark',
+
+    // FONT
+    'aria-checked:bg-font-primary',
+    'aria-checked:dark:bg-font-primary',
+    'aria-checked:bg-font-secondary',
+    'aria-checked:dark:bg-font-secondary',
+    'aria-checked:bg-font-tertiary',
+    'aria-checked:dark:bg-font-tertiary',
+
+    // STROKES
+    'aria-checked:bg-stroke',
+    'aria-checked:dark:bg-stroke',
+    'aria-checked:bg-stroke-light',
+    'aria-checked:dark:bg-stroke-light',
+    'aria-checked:bg-stroke-extra-light',
+    'aria-checked:dark:bg-stroke-extra-light',
+
+    // STATE COLORS (ERROR)
+    'aria-checked:bg-red-main',
+    'aria-checked:dark:bg-red-main',
+    'aria-checked:bg-red-medium',
+    'aria-checked:dark:bg-red-medium',
+    'aria-checked:bg-red-background-tone',
+    'aria-checked:dark:bg-red-background-tone',
+
+    // STATE COLORS (WARNING)
+    'aria-checked:bg-yellow-main',
+    'aria-checked:dark:bg-yellow-main',
+    'aria-checked:bg-yellow-medium',
+    'aria-checked:dark:bg-yellow-medium',
+    'aria-checked:bg-yellow-background-tone',
+    'aria-checked:dark:bg-yellow-background-tone',
+
+    // STATE COLORS (SUCCESS)
+    'aria-checked:bg-green-main',
+    'aria-checked:dark:bg-green-main',
+    'aria-checked:bg-green-medium',
+    'aria-checked:dark:bg-green-medium',
+    'aria-checked:bg-green-background-tone',
+    'aria-checked:dark:bg-green-background-tone',
+  ],
   plugins: [],
 }
 
